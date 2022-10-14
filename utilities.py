@@ -11,7 +11,7 @@ def convert_bytes_to_image(image_bytes):
 
 def convert_image_to_bytes(image):
     file_object = io.BytesIO()
-    img= Image.fromarray(image)
+    img= Image.fromarray(image[:, :, ::-1])
     img.save(file_object, 'PNG')
     base64img = "data:image/png;base64," + b64encode(file_object.getvalue()).decode('ascii')
     return base64img

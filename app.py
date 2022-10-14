@@ -36,7 +36,7 @@ def test():
             file = request.files.get('file', '')
             img = convert_bytes_to_image(file.read())
             result = inference_segmentor(model, img)
-            output_image = model.show_result(img, result, palette=TraceDataset.PALETTE[:33])[:, :, ::-1]
+            output_image = model.show_result(img, result, palette=TraceDataset.PALETTE[:33])
             return render_template('result.html', output_image=convert_image_to_bytes(output_image))
         except:
             return redirect(request.url)
